@@ -19,7 +19,7 @@ Clona el Repositorio
 Primero, clona el repositorio del proyecto usando el siguiente comando:
 
 
-git clone https://github.com/tu_usuario/repo-interview-front.git
+git clone https://github.com/MaicolMartinezAcosta/repo-interview-front.git
 
 Navega al Directorio del Proyecto
 
