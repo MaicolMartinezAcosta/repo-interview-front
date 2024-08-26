@@ -1,0 +1,118 @@
+<div class="container">
+  <h2>Formulario de Registro</h2>
+  <hr />
+  <form [formGroup]="registroForm" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+      <div class="form-group">
+        <label for="id">ID</label>
+        <input
+          id="id"
+          type="text"
+          formControlName="id"
+          [attr.disabled]="isEditMode ? true : false"
+        />
+        <div *ngIf="id?.invalid && (id?.touched || isSubmitted)">
+          <small class="error-message" *ngIf="id?.errors?.['required']"
+            >Campo requerido</small
+          >
+          <small class="error-message" *ngIf="id?.errors?.['minlength']"
+            >ID debe tener al menos 3 caracteres</small
+          >
+          <small class="error-message" *ngIf="id?.errors?.['maxlength']"
+            >ID debe tener máximo 10 caracteres</small
+          >
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="nombre">Nombre</label>
+        <input id="nombre" type="text" formControlName="nombre" />
+        <div *ngIf="nombre?.invalid && (nombre?.touched || isSubmitted)">
+          <small class="error-message" *ngIf="nombre?.errors?.['required']"
+            >Campo requerido</small
+          >
+          <small class="error-message" *ngIf="nombre?.errors?.['minlength']"
+            >Nombre debe tener al menos 5 caracteres</small
+          >
+          <small class="error-message" *ngIf="nombre?.errors?.['maxlength']"
+            >Nombre debe tener máximo 100 caracteres</small
+          >
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="descripcion">Descripción</label>
+        <input id="descripcion" type="text" formControlName="descripcion" />
+        <div
+          *ngIf="descripcion?.invalid && (descripcion?.touched || isSubmitted)"
+        >
+          <small class="error-message" *ngIf="descripcion?.errors?.['required']"
+            >Campo requerido</small
+          >
+          <small
+            class="error-message"
+            *ngIf="descripcion?.errors?.['minlength']"
+            >Descripción debe tener al menos 10 caracteres</small
+          >
+          <small
+            class="error-message"
+            *ngIf="descripcion?.errors?.['maxlength']"
+            >Descripción debe tener máximo 200 caracteres</small
+          >
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="logo">Logo</label>
+        <input id="logo" type="text" formControlName="logo" />
+        <div *ngIf="logo?.invalid && (logo?.touched || isSubmitted)">
+          <small class="error-message" *ngIf="logo?.errors?.['required']"
+            >Campo requerido</small
+          >
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group full-width">
+        <label for="fechaLiberacion">Fecha Liberación</label>
+        <input
+          id="fechaLiberacion"
+          type="date"
+          formControlName="fechaLiberacion"
+          [attr.min]="todayDate"
+          [ngClass]="{
+            'is-invalid':
+              fechaLiberacion?.invalid &&
+              (fechaLiberacion?.touched || isSubmitted)
+          }"
+        />
+        <div
+          *ngIf="
+            fechaLiberacion?.invalid &&
+            (fechaLiberacion?.touched || isSubmitted)
+          "
+        >
+          <small
+            class="error-message"
+            *ngIf="fechaLiberacion?.errors?.['required']"
+            >Campo requerido</small
+          >
+          <small
+            class="error-message"
+            *ngIf="fechaLiberacion?.errors?.['invalidDate']"
+            >La fecha debe ser hoy o una fecha futura</small
+          >
+        </div>
+      </div>
+    </div>
+    <div class="form-buttons">
+      <button
+        type="reset"
+        [attr.disabled]="isEditMode ? true : null"
+        class="btn btn-secondary"
+      >
+        Reiniciar
+      </button>
+      <button type="submit">{{ isEditMode ? "Actualizar" : "Agregar" }}</button>
+    </div>
+  </form>
+</div>

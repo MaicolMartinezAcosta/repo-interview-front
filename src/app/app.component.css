@@ -1,0 +1,21 @@
+.logo{
+    color: rgb(40, 40, 124);
+}
+.header .logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem; 
+  }
+  
+  .header .logo .logo-image {
+    width: 2rem; 
+    height: auto;
+    margin-right: 0.5rem; 
+    vertical-align: middle; 
+  }
+  
+  .header .logo .icono-banco {
+    font-size: 2rem; 
+  }
+  
